@@ -3,254 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cooper Zvegintzov | CS Student & AI/ML Engineer</title>
-    <meta name="description" content="Resume of Cooper Zvegintzov - Computer Science Student and AI/ML Engineering Intern based in San Diego.">
-    
+    <title>Top Sports Headlines</title>
     <style>
-        /* --- RESET & BASICS --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #e63946;
+            --bg-color: #f1faee;
+            --text-color: #1d3557;
+            --card-bg: #ffffff;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-            padding: 40px 20px;
-        }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-radius: 4px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        /* --- HEADER --- */
-        header { text-align: center; margin-bottom: 30px; }
-        h1 {
-            font-size: 2.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            color: #000;
-        }
-        .contact-info {
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-        .contact-info span { margin: 0 8px; color: #ccc; } /* Separator pipes */
-        
-        .summary {
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            padding: 1rem 0;
             text-align: center;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        /* --- SECTIONS --- */
-        section { margin-bottom: 25px; }
-        
-        h2 {
-            font-size: 1.1rem;
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
             text-transform: uppercase;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
         }
 
-        /* --- JOB/SCHOOL ENTRIES --- */
-        .entry { margin-bottom: 15px; }
-        
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap; /* Allows wrapping on mobile */
-        }
-        
-        .title-group { font-weight: bold; font-size: 1.05rem; }
-        .location { font-weight: normal; font-style: italic; font-size: 0.95rem; }
-        .date { font-style: italic; font-size: 0.95rem; text-align: right; }
-        
-        .subtitle {
-            display: flex;
-            justify-content: space-between;
-            font-style: italic;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
-
-        /* --- LISTS --- */
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
+        .date-display {
+            font-size: 0.9rem;
+            opacity: 0.9;
             margin-top: 5px;
         }
-        li { margin-bottom: 3px; font-size: 0.95rem; }
 
-        /* --- SKILLS SECTION --- */
-        .skills-list { list-style: none; margin: 0; }
-        .skills-list li { margin-bottom: 5px; }
-        .skill-category { font-weight: bold; }
-
-        /* --- DOWNLOAD BUTTON --- */
-        .pdf-download {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px dashed #ddd;
+        main {
+            max-width: 800px;
+            width: 90%;
+            margin-top: 2rem;
+            display: grid;
+            gap: 20px;
         }
-        .btn {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
+
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.75rem;
             font-weight: bold;
-            font-size: 0.9rem;
-            transition: background 0.3s;
+            border-radius: 20px;
+            text-transform: uppercase;
         }
-        .btn:hover { background-color: #555; text-decoration: none; }
 
-        /* --- MOBILE TWEAKS --- */
-        @media (max-width: 600px) {
-            .container { padding: 20px; }
-            h1 { font-size: 1.8rem; }
-            .entry-header, .subtitle { flex-direction: column; }
-            .date { text-align: left; margin-bottom: 5px; }
+        .card-content {
+            padding: 20px;
         }
-    </style>
-</head>
-<body>
 
-    <div class="container">
-        <header>
-            <h1>Cooper Zvegintzov</h1>
-            <div class="contact-info">
-                Cardiff, CA 92007 <span>|</span> 
-                (858) 999-1969 <span>|</span> 
-                <a href="mailto:Cooperzvegintzov@gmail.com">Cooperzvegintzov@gmail.com</a><br>
-                <a href="https://www.linkedin.com/in/cooperlz/" target="_blank">linkedin.com/in/cooperlz</a> <span>|</span> 
-                <a href="https://github.com/cooperlz" target="_blank">github.com/cooperlz</a>
-            </div>
-            
-            <div class="summary">
-                Computer Science student and AI/ML Engineering Intern with a strong foundation in C++, Python, and Data Analysis. Uniquely skilled in bridging the gap between technical engineering and operational management, drawing on 5+ years of leadership experience managing high-volume business operations.
-            </div>
-        </header>
-
-        <section>
-            <h2>Education</h2>
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="title-group">MiraCosta College <span class="location">- Oceanside, CA</span></div>
-                    <div class="date">Aug. 2023 – Present</div>
-                </div>
-                <div class="subtitle">
-                    <div>Computer Science (Transfer Track) | <strong>GPA: 3.84</strong></div>
-                </div>
-                <ul>
-                    <li><strong>Honors:</strong> Phi Theta Kappa Honor Society (Top Tier Academic Achievement)</li>
-                    <li><strong>Relevant Coursework:</strong> Data Structures (Java), Computer Architecture (Assembly), Calculus I-III, Physics I-II</li>
-                    <li><strong>Fall 2025 Coursework:</strong> Linear Algebra, Discrete Mathematics, C++ Programming</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>Technical Skills</h2>
-            <ul class="skills-list">
-                <li><span class="skill-category">Languages:</span> Python, C++, Java, Assembly, SQL</li>
-                <li><span class="skill-category">Data & ML:</span> Pandas, Matplotlib, Life Cycle Assessment (LCA), Data Analysis, Automation</li>
-                <li><span class="skill-category">DevOps & Tools:</span> Git/GitHub, Jupyter, PyCharm, ClickFunnels, CRM Tools</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Technical Experience</h2>
-            
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="title-group">ChakraTech <span class="location">- San Diego, CA</span></div>
-                    <div class="date">June 2025 – Present</div>
-                </div>
-                <div class="subtitle">AI/ML Engineering Intern</div>
-                <ul>
-                    <li>Engineer Python and AI-based tools to automate Life Cycle Assessment (LCA) data extraction, significantly reducing manual workload for sustainability research.</li>
-                    <li>Conduct prospective LCA on palm oil-to-PHA production to establish baseline carbon footprints for future process optimization.</li>
-                    <li>Apply Machine Learning models to analyze prospective technologies and generate actionable insights on reducing the environmental impact of bioplastics.</li>
-                    <li>Deliver reproducible workflows in Jupyter/PyCharm to enable transparent collaboration.</li>
-                </ul>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="title-group">The Influence Army <span class="location">- Remote</span></div>
-                    <div class="date">Apr. 2023 – Sep. 2023</div>
-                </div>
-                <div class="subtitle">Digital Operations Specialist</div>
-                <ul>
-                    <li>Built and managed web funnels using ClickFunnels and CRM tools to drive user acquisition and engagement.</li>
-                    <li>Designed automated email workflows to nurture subscriber lists, increasing retention and streamlining communication.</li>
-                    <li>Developed a membership portal with Video-On-Demand functionality, ensuring seamless access to proprietary content.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>Management & Professional Experience</h2>
-            
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="title-group">Jersey Mike's Subs <span class="location">- Encinitas & Carlsbad, CA</span></div>
-                    <div class="date">Sep. 2018 – Jun. 2023</div>
-                </div>
-                <div class="subtitle">General Manager | Managed 5 Locations</div>
-                <ul>
-                    <li>Directed operations across five store locations, managing P&L, inventory, and a staff of 20+ employees.</li>
-                    <li>Oversaw all hiring, scheduling, and training, prioritizing culture fit to successfully reduce turnover in a high-volume environment.</li>
-                    <li>Optimized inventory management and vendor relations, resulting in reduced waste and lower operational costs.</li>
-                </ul>
-            </div>
-
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="title-group">Trader Joe's <span class="location">- Encinitas, CA</span></div>
-                    <div class="date">Sep. 2023 – Aug. 2024</div>
-                </div>
-                <div class="subtitle">Crew Member</div>
-                <ul>
-                    <li>Delivered exceptional customer service while balancing full-time STEM coursework (40 hrs/week).</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>Projects</h2>
-            <div class="entry">
-                <div class="entry-header">
-                    <div class="title-group">Academic Projects & Coursework <span class="location">- MiraCosta College</span></div>
-                </div>
-                <ul>
-                    <li><strong>Data Structures (Java):</strong> Implemented complex data structures (Trees, Hash Maps, Graphs) to optimize algorithm efficiency.</li>
-                    <li><strong>Linear Algebra (MATLAB):</strong> Developed scripts to calculate rank, nullity, and transition matrices for linear transformations, utilizing <code>rref</code> and matrix operations to model change-of-basis problems.</li>
-                </ul>
-            </div>
-        </section>
-
-        <div class="pdf-download">
-            <p style="margin-bottom: 15px;">Need the official file?</p>
-            <a href="resume.pdf" class="btn" download>Download Resume PDF</a>
-        </div>
-
-    </div>
-
-</body>
-</html>
+        .card-content h2 {
+            margin-top: 0;
+            font-size:
